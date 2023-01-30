@@ -1,0 +1,44 @@
+.navbar{
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: #8800ff99;
+    backdrop-filter: blur(2rem);
+    position: sticky;
+    top : 0;
+    z-index: 1;
+}
+
+.card {
+    max-width: 100%;
+    background-color: black;
+    border: solid 1px #8800ff !important;
+    margin: 1rem;
+}
+
+.img-container {
+    background-color: #120023;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+}
+
+.img-container img{
+    max-width: 100%;
+    padding: 1rem;
+    max-height: 40vh;
+}
+
+.card-text-container{
+    padding: 1rem;
+}
+
+.truncate {
+    display: -webkit-box  ;
+    max-width: calc(100% - 0.7rem)  ;
+    -webkit-line-clamp: 3  ;
+    -webkit-box-orient: vertical  ;
+    overflow: hidden  ;
+}
