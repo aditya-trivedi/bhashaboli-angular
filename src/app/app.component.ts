@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import { MyBootstrapModalComponent } from './modals/my-bootstrap-modal/my-bootstrap-modal.component';
+import { NewsService } from './services/news.service';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +13,49 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'bhasaboli-angular';
   newsData : any;
+  lang : any;
 
-  constructor(private http: HttpClient ) {
-    this.getJSON().subscribe((data : any) => {
-        this.newsData = data.posts ;
+  constructor(  
+      private http: HttpClient,
+      private modalService : NgbModal,
+      private newService : NewsService
+    ) {
+
+      if (window.localStorage.getItem('bhashaboliCurrentLanguage')) {
+        this.lang = window.localStorage.getItem('bhashaboliCurrentLanguage')
+      } else {
+        this.lang = 'english'
+      }
+
+      this.populateData()
+  }
+
+  populateData(){
+    this.newService.getNewsPosts(this.lang).subscribe((data : any) => {
+      this.newsData = data.record.posts ;
     });
   }
 
-  public getJSON(): Observable<any> {
-      return this.http.get("../assets/english.json");
-  }
   
-  openModal(post : any){
-    console.log(post)
-    // this.modalService.open(post)
+  openModal(post : any) {
+    const modalRef = this.modalService.open(MyBootstrapModalComponent,{
+      scrollable : true,
+      centered : true,
+      windowClass : 'modalWindow'
+    });
+    let data = post
+
+    modalRef.componentInstance.newsData = data;
+    modalRef.result.then((result) => {
+      console.log(result);
+      }, (reason) => {
+    });
+  }
+
+  onLanguageChange(language : any){
+    this.lang = language;
+    window.localStorage.setItem('bhashaboliCurrentLanguage',language)
+    this.populateData()
   }
 
 }

@@ -1,0 +1,24 @@
+.card {
+    color: white;
+    background-color: black;
+    border: solid 1px #8800ff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.img-container {
+    background-color: #120023;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+}
+
+.img-container img{
+    max-width: 100%;
+    padding: 1rem;
+    max-height: 40vh;
+}
+.card-text-container{
+    padding: 1rem;
+}

@@ -6,7 +6,7 @@
       <span style="color: #FF671F;">Bh</span><span>ar</span><span style="color:  #0ac530;">at</span>
     </p>
   </div>
-  <select name="" id="">
+  <select class="language-selector" (ngModelChange)="onLanguageChange($event)"  [(ngModel)]="lang">
     <option value="english">English</option>
     <option value="hindi">Hindi</option>
     <option value="malyalam">Malyalam</option>
@@ -16,37 +16,57 @@
     <option value="punjabi">Punjabi</option>
     <option value="marathi">Marathi</option>
     <option value="telgu">Telgu</option>
+    <option value="maithali">Maithali</option>
+    <option value="bhojpuri">Bhojpuri</option>
   </select>
 </nav>
 
 <div class="container" style="margin-top: 5rem;">
   <div class="row">
-
-    <div *ngFor="let post of newsData" class="col-lg-4">
-      <div class="card" (click)="openModal(post)">
-        <div class="img-container">
-          <img src="{{ post.image_url}}" alt="">
+    <div class="col-lg-4">
+      <div class="row " *ngFor="let post of newsData ;let i = index">
+        <div>
+          <div *ngIf="i%3==0" class="card" (click)="openModal(post)">
+            <div class="img-container">
+              <img src="{{ post.image_url}}" alt="">
+            </div>
+            <section class="card-text-container">
+              <h3>{{ post.heading }}</h3>
+              <p class="truncate">{{ post.description }}</p>
+            </section>
+          </div>
         </div>
-        <section class="card-text-container">
-          <h3>{{ post.heading }}</h3>
-          <p class="truncate">{{ post.description }}</p>
-        </section>
-      </div>
+      </div> 
+    </div>
+    <div class="col-lg-4">
+      <div class="row " *ngFor="let post of newsData ;let i = index">
+        <div>
+          <div *ngIf="i%3==1" class="card" (click)="openModal(post)">
+            <div class="img-container">
+              <img src="{{ post.image_url}}" alt="">
+            </div>
+            <section class="card-text-container">
+              <h3>{{ post.heading }}</h3>
+              <p class="truncate">{{ post.description }}</p>
+            </section>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="col-lg-4">
+      <div class="row " *ngFor="let post of newsData ;let i = index">
+        <div>
+          <div *ngIf="i%3==2" class="card" (click)="openModal(post)">
+            <div class="img-container">
+              <img src="{{ post.image_url}}" alt="">
+            </div>
+            <section class="card-text-container">
+              <h3>{{ post.heading }}</h3>
+              <p class="truncate">{{ post.description }}</p>
+            </section>
+          </div>
+        </div>
+      </div> 
     </div>
   </div>
 </div>
-
-
-
-<ng-template #content let-modal>
-	<div class="modal-header">
-		<h4 class="modal-title"></h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-		<p>One fine body&hellip;</p>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-	</div>
-</ng-template>

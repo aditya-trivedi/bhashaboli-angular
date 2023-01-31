@@ -1,0 +1,18 @@
+<div class="modal-content">
+    <div class="modal-body">
+        <div class="card">
+
+            <div class="img-container">
+                <img src="{{ newsData.image_url}}" alt="">
+            </div>
+        
+             <section class="card-text-container">
+                <h2>{{ newsData.heading }}</h2>
+                <p >{{ newsData.description }}</p>
+            </section>
+            <audio controls src="{{ newsData.audioUrl}}" style="width: 90%; margin: 5%;"></audio>
+            <button style="height: 3rem ; border: none; background-color: #8800ff; color: white; outline: none;" (click)="closeModal('close')">Close</button>
+        </div>
+    </div>
+</div>
+

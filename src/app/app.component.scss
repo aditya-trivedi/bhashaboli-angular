@@ -40,5 +40,44 @@
     max-width: calc(100% - 0.7rem)  ;
     -webkit-line-clamp: 3  ;
     -webkit-box-orient: vertical  ;
-    overflow: hidden  ;
+    overflow: hidden;
+}
+
+::ng-deep ngb-modal-window{
+    backdrop-filter: blur(2rem);
+}
+
+::ng-deep .modalWindow .modal-dialog {
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+::ng-deep .modal-body {
+    padding:  0;
+    border: none;
+}
+
+::ng-deep .modal-content {
+    border: none;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+  }
+
+.language-selector{
+    background-color: black; 
+    outline: none;
+    color : white ;
+    border-radius: 1rem; 
+    height: 3rem; 
+    border: solid 1px #ffffff; 
+    width: 10rem;
+    text-align-last: center ;
 }
